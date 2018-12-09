@@ -28,8 +28,8 @@ int main(int argc, char *argv[]){
 		exit(-2);
 	}
     /**********open and create sqlite3 db****************************/
-    sqlite3 *sqlite3_db;
-    open_sqlite3_db(sqlite3_db);
+    sqlite3 *dataline_db;
+    open_sqlite3_db(dataline_db);
     /***********initialize DataLine struct and read lines in*********/
 	struct DataLine* data = init_DataLine();
     for( int j = 0; j < 40000 ; j++){
@@ -39,6 +39,6 @@ int main(int argc, char *argv[]){
     /**********free memory, close files and return*******************/
 	free(data);
 	gzclose(data_in_file);
-    sqlite3_close(sqlite3_db);
+    sqlite3_close(dataline_db);
 	return 0;
 }

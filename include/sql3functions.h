@@ -12,6 +12,8 @@
 //1.dataline-each row is data from a line in data_in_file
 //2.map_onet_soc-mapping of onet to soc5
 //3.soc_hierarchy-holds child,parent,level and name information for each soc5 code
-void open_sqlite3_db(sqlite3 *data_line_db);
+void open_sqlite3_db(sqlite3 *dataline_db);
+//insert rows into map_onet_soc table from data/map_onet_soc.csv
+void fill_map_onet_soc(sqlite3 *dataline_db);
 
 #endif
