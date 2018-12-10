@@ -7,6 +7,8 @@
 #ifndef DATALINE_H
 #define DATALINE_H
 
+#include <zlib.h>
+
 struct DataLine{//store data from processed line
     char *body;//body text
 	unsigned int body_mem_size;//size of memory allocated to body
@@ -38,20 +40,28 @@ void read_line(gzFile data_in_file, struct DataLine *data);
 //print out DataLine struct
 void print_data_line(struct DataLine *data);
 //read until next text tag and call corresponding function to fill data struct
-void read_next_tag(gzFile in_file, char *tag, int tag_size);
+int read_next_tag(gzFile in_file, char *tag, int tag_size);
 //read body from in_file and place in data_struct->body
-void get_body(gzFile in_file, struct DataLine *data);
+int get_body(gzFile in_file, struct DataLine *data);
 //read title from in_file and place in data_struct->title
-void get_title(gzFile in_file, struct DataLine *data);
+int get_title(gzFile in_file, struct DataLine *data);
 //read expired date from in_file and place in data_struct->expired
-void get_expired_date(gzFile in_file, struct DataLine *data);
+int get_expired_date(gzFile in_file, struct DataLine *data);
 //read posted date from in_file and place in data_struct->posted
-void get_posted_date(gzFile in_file, struct DataLine *data);
+int get_posted_date(gzFile in_file, struct DataLine *data);
 //read state from in_file and place in data_struct->state
-void get_state(gzFile in_file, struct DataLine *data);
+int get_state(gzFile in_file, struct DataLine *data);
 //read city name from in_file and place in data_struct->city
-void get_city(gzFile in_file, struct DataLine *data);
+int get_city(gzFile in_file, struct DataLine *data);
 //read onet code from in_file and place in data_struct->onet
-void get_onet(gzFile in_file, struct DataLine *data);
+int get_onet(gzFile in_file, struct DataLine *data);
+//get soc5 code from map_onet_soc5 table in dataline_db
+void get_soc5(sqlite3 *dataline_db, struct DataLine *data);
+//get soc2 code from soc_hierarchy table in dataline_db
+void get_soc2(sqlite3 *dataline_db, struct DataLine *data);
+//fill dataline table with data, each data struct is a row in db
+void fill_dataline_table(sqlite3 *dataline_db, struct DataLine *data);
+//frees all memory in data struct
+void delete_data(struct DataLine *data);
 
 #endif
