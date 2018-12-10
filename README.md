@@ -1,12 +1,18 @@
 # Emsi
 
-***to get zlib.h to work***
-must install zlibc from debian repository
+Program tested on fresh install of Debian 9.5.0 running as VM in KVM
 
-LD_PRELOAD=/lib/uncompress.so
+apt install from deb repository:
+gcc
+make
+zlib1g-dev
 
-export LD_PRELOAD
+To compile: run make
 
-must compile gcc with -lz switch to link zlib.h
+Included Makefile will compile from files in directory
 
-gcc -lz main.c
+datafile is read as cmdline argument to ./a.out
+
+$ ./a.out datafile.gz
+
+Output sqlite db will be called dataline.db. Summary from requirements is printed to stdout.
