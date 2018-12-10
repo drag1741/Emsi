@@ -6,10 +6,10 @@ apt install from deb repository: gcc, make, zlib1g-dev
 
 To compile: run make
 
-Included Makefile will compile from files in directory
+Included Makefile will compile from files in directory.
 
-datafile is read as cmdline argument to ./a.out
+Input datafile is read as cmdline argument to ./a.out:
 
 $ ./a.out datafile.gz
 
-Output sqlite3 db will be called dataline.db. Summary from requirements is printed to stdout.
+Output sqlite3 db will be called dataline.db. There are 3 tables created but the relevant one is called dataline. The summary for the requirements is sqlite3 calls to dataline table from main.c and printed to stdout.
