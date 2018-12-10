@@ -56,11 +56,6 @@ int main(int argc, char *argv[]){
         get_soc2(dataline_db, data);//inject soc2 code
         fill_dataline_table(dataline_db, data);
         lines_count++;
-        if(lines_count %100 == 0){
-            fprintf(stderr,"############################################\n");
-            fprintf(stderr,"line:%li\n",lines_count);
-            print_data_line(data);
-        }
         if(data->html_removed != 0) html_count++;
         if(in_char = gzgetc(data_in_file) != EOF)//look for EOF
             gzungetc(in_char,data_in_file);
