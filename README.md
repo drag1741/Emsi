@@ -2,10 +2,7 @@
 
 Program tested on fresh install of Debian 9.5.0 running as VM in KVM
 
-apt install from deb repository:
-gcc
-make
-zlib1g-dev
+apt install from deb repository: gcc, make, zlib1g-dev
 
 To compile: run make
 
@@ -15,4 +12,4 @@ datafile is read as cmdline argument to ./a.out
 
 $ ./a.out datafile.gz
 
-Output sqlite db will be called dataline.db. Summary from requirements is printed to stdout.
+Output sqlite3 db will be called dataline.db. Summary from requirements is printed to stdout.
